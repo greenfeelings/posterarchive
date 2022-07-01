@@ -2,9 +2,40 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>My Imageboard</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <h1 class="page-title">My Imageboard</h1>
+<!---------------------------This container is our Vue Instance---------------------------->
+
+<div  id="main">
+   
+    <first-component v-if="imageSelected" v-bind:image-selected="imageSelected"></first-component>
+
+  <form @submit.prevent="handleSubmit">
+    <input name="title" placeholder="Title" v-model="title" />
+    <input name="user" placeholder="User" v-model="name"/>
+    <input @change="changingTheFile" name="image" type="file" accept="image"/>
+    <button>Submit</button>
+</form>
+  
+    <div class="container" v-for="image in images" @click="enlarge(image.id)" >
+        
+        <div class="photo-box" >
+            
+            <img class ="main-photo" :src=image.url  > 
+            <h1 class="photo-title" >{{image.title}}</h1>
+        </div>
+
+
+</div>
+
+
+</div>
+
+
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>
 </body>
 </html>
+

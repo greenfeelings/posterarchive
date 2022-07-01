@@ -1,0 +1,41 @@
+* {
+    background-color: green;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+}
+
+.page-title {
+    color: white;
+}
+
+
+form {
+    padding-bottom: 20px;
+}
+
+.main-photo {
+    height: 300px;
+    width: 300px;
+
+    object-fit: cover;
+}
+
+.photo-title {
+    font-size: large;
+    color: white;
+}
+
+.container {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.description {
+    font-size: 13px;
+    color: white;
+    font-style: italic;
+}
+
+.photo-box {
+    border: groove white 5px;
+}
