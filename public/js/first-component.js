@@ -25,11 +25,20 @@ const firstComponent = {
         modalAppear() {
             console.log("modal function working");
         },
+
+        notifyParent() {
+            this.$emit("close");
+        },
     },
-    template: `<div class="modal">
-  
-   <h1>{{image.title}}</h1>
-    
+    template: `
+
+    <div class="modal-background">
+    <div @click="notifyParent" id ="modal-square">
+        
+    <img class ="modal-photo" :src=image.url  > 
+    <h1 class = "modal-title">{{image.title}}</h1>
+    <p class="modal-description">{{image.description}}</p>
+    </div>
     </div>`,
 };
 export default firstComponent;

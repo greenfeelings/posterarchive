@@ -14,7 +14,7 @@ Vue.createApp({
             images: [],
             title: "",
             file: "",
-            imageSelected: false,
+            imageSelected: "",
         };
     }, // data ends here
 
@@ -59,6 +59,10 @@ Vue.createApp({
             this.imageSelected = id;
             // /this.image;
             console.log("photo is clicked", id);
+        },
+
+        closemodal() {
+            this.imageSelected = null;
         },
 
         // modalAppear: function () {

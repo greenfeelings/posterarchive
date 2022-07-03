@@ -8,7 +8,6 @@
     color: white;
 }
 
-
 form {
     padding-bottom: 20px;
 }
@@ -38,4 +37,51 @@ form {
 
 .photo-box {
     border: groove white 5px;
+}
+
+#modal-square {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    width: 800px;
+    border: solid white;
+    /* max-width: 100%; */
+}
+
+.modal-title {
+    color: white;
+    background-color: black;
+    text-align: center;
+}
+
+.modal-photo {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.modal-background {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-description {
+    background-color: black;
+    color: white;
+    text-align: center;
 }

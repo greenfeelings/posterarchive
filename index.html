@@ -11,7 +11,7 @@
 
 <div  id="main">
    
-    <first-component v-if="imageSelected" v-bind:image-selected="imageSelected"></first-component>
+    <first-component v-if="imageSelected" v-bind:image-selected="imageSelected" @close="closemodal"></first-component>
 
   <form @submit.prevent="handleSubmit">
     <input name="title" placeholder="Title" v-model="title" />
