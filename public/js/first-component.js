@@ -1,9 +1,16 @@
+import comments from "./comments.js";
+
 const firstComponent = {
     data() {
         return {
             image: {},
         };
     },
+
+    components: {
+        comments: comments,
+    },
+
     props: ["imageSelected"],
     mounted() {
         console.log(
@@ -33,11 +40,16 @@ const firstComponent = {
     template: `
 
     <div class="modal-background">
-    <div @click="notifyParent" id ="modal-square">
+    <div id ="modal-square">
         
-    <img class ="modal-photo" :src=image.url  > 
+    <div class="modalp-container">
+    <img  @click="notifyParent" class ="modal-photo" :src=image.url  > 
+    </div>
     <h1 class = "modal-title">{{image.title}}</h1>
     <p class="modal-description">{{image.description}}</p>
+   
+     <comments v-bind:image-selected="imageSelected" ></comments>
+
     </div>
     </div>`,
 };

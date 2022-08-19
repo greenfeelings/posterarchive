@@ -1,0 +1,13 @@
+{
+    "folders": [
+		{
+			"name": "cayenne-imageboard",
+			"path": "."
+		},
+		{
+			"name": "photolibrary-fonts",
+			"path": "../Desktop/photolibrary-fonts"
+		}
+	],
+    "settings": {}
+}

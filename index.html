@@ -2,38 +2,51 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>My Imageboard</title>
-    <link rel="stylesheet" href="/css/style.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Coda:wght@800&display=swap" rel="stylesheet">
+
+<img class="rave-header" src="https://see.fontimg.com/api/renderfont4/axD7J/eyJyIjoiZnMiLCJoIjoxNDAsInciOjIwMDAsImZzIjo3MCwiZmdjIjoiIzAwMDAwMCIsImJnYyI6IiNGRkZGRkYiLCJ0IjoxfQ/UkFWRSBGTFlFUlM/brohalo-regular.png" alt="Waves fonts"></a>
+
+
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1 class="page-title">My Imageboard</h1>
+   
 <!---------------------------This container is our Vue Instance---------------------------->
 
 <div  id="main">
+    <div class="wrapper">
    
     <first-component v-if="imageSelected" v-bind:image-selected="imageSelected" @close="closemodal"></first-component>
 
-  <form @submit.prevent="handleSubmit">
-    <input name="title" placeholder="Title" v-model="title" />
-    <input name="user" placeholder="User" v-model="name"/>
-    <input @change="changingTheFile" name="image" type="file" accept="image"/>
+  <form class="main-form" @submit.prevent="handleSubmit">
+      <input id="user" name="user" placeholder="Username" v-model="name"/>
+      <input id="title" name="title" placeholder="Title" v-model="title" />
+    <input  @change="changingTheFile" name="image" type="file" accept="image"/>
     <button>Submit</button>
 </form>
-  
+  <div class="wrapper-poster">
     <div class="container" v-for="image in images" @click="enlarge(image.id)" >
-        
+       <div class="photo-container" >
         <div class="photo-box" >
             
             <img class ="main-photo" :src=image.url  > 
             <h1 class="photo-title" >{{image.title}}</h1>
+
+            </div>
         </div>
-
-
+        
+    </div>
+    
+    
+    
+    </div>
+    <button id="more-button" @click="moreButton">More</button>
 </div>
-
-
 </div>
-
 
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>
 </body>

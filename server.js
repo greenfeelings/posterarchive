@@ -25,7 +25,7 @@ app.use(express.json());
 app.get("/images", (req, res) => {
     db.getImages()
         .then((result) => {
-            console.log(result);
+            console.log("result rows in getImages", result);
             res.json(result.rows);
         })
         .catch((err) => {
@@ -38,7 +38,11 @@ app.get("/modal/:id", (req, res) => {
     const id = req.params.id;
     db.getModal(id)
         .then((result) => {
-            res.json(result.rows[0]);
+            if (result.rows[0]) {
+                res.json(result.rows[0]);
+            } else {
+                res.json();
+            }
         })
         .catch((err) => {
             console.log("error in imags: id", err);
@@ -76,7 +80,7 @@ app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
 
     let url = "https://s3.amazonaws.com/spicedling/" + req.file.filename;
     if (req.file) {
-        db.addImage(url, req.body.user, req.body.title).then((result) => {
+        db.addImage( , req.body.user, req.body.title).then((result) => {
             console.log(result.rows[0]);
             res.json({
                 success: true,
@@ -90,8 +94,39 @@ app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
     }
 });
 
+app.get("/more/:pix", (req, res) => {
+    let pix = req.params.pix;
+    console.log("more button logic");
+    db.moreButton(pix).then((result) => {
+        res.json(result.rows);
+    });
+});
+
+app.get("/comments/:id", (req, res) => {
+    let id = req.params.id;
+    console.log(
+        "this is the console log for the comment id get that we want comments for:",
+        id
+    );
+    db.getComments(id).then((result) => {
+        // console.log(result.rows);
+
+        res.json(result.rows);
+    });
+});
+
+app.post("/comment", (req, res) => {
+    let { image_id, comment, username } = req.body;
+    console.log("log for comments post req.body:", req.body);
+    db.addComments(image_id, username, comment).then((result) => {
+        console.log("my result.rows in my app.post in server:", result.rows);
+        res.json(result.rows[0]);
+    });
+
+    // add ur commts to ur db
+});
+
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });
-
 app.listen(8080, () => console.log(`I'm listening.`));
